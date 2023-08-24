@@ -1,0 +1,42 @@
+name: Trigger auto deployment for capp0823
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - '**'
+    - '.github/workflows/capp0823-AutoDeployTrigger-2d424eb5-00e6-4c8e-ada1-dc975469c9f9.yml'
+
+  # Allow mannually trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.CAPP0823_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: containers0823.azurecr.io
+          registryUsername: ${{ secrets.CAPP0823_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.CAPP0823_REGISTRY_PASSWORD }}
+          containerAppName: capp0823
+          resourceGroup: ContainerAppLab
+          imageToBuild: containers0823.azurecr.io/capp0823:${{ github.sha }}
+          
+
+     
+
