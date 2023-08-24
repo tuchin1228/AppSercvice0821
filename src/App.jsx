@@ -1,10 +1,24 @@
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import axios from 'axios'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  useEffect(()=>{
+    FetchData();
+  },[])
+
+  const FetchData = async() =>{
+    let res = await axios.get("https://appdotnet0821.azurewebsites.net/api/test").catch(err=>{
+      console.log("撈api發生錯誤");
+    })
+    if(res.status == 200){
+      console.log("API撈成功 message = ",res.data.message);
+    }
+  }
 
   return (
     <>
