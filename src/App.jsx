@@ -12,7 +12,7 @@ function App() {
   },[])
 
   const FetchData = async() =>{
-    let res = await axios.get("https://appdotnet0821.azurewebsites.net/api/test").catch(err=>{
+    let res = await axios.get("https://api-net0825.azure-api.net/api/test").catch(err=>{
       console.log("撈api發生錯誤");
     })
     if(res.status == 200){
@@ -32,7 +32,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <p>version 0824-01-29</p>
+        <p>version 0828-16-03</p>
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
