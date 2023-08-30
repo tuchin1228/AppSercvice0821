@@ -14,7 +14,7 @@ function App() {
     // Container Env 測試
     console.log('Hello ' + import.meta.env.keyvaultsecret0829)
     console.log('Hello ' + import.meta.env.ConnectString)
-    console.log('Hello ' + import.meta.env.VITE_TEST)
+    console.log('Hello ' + import.meta.env.VITE_TEST_VAL)
   }, []);
 
 
