@@ -10,8 +10,14 @@ function App() {
   useEffect(() => {
     console.log("測試");
     FetchData();
+    
+    // Container Env 測試
+    console.log('Hello ' + process.env.keyvaultsecret0829)
+    console.log('Hello ' + process.env.ConnectString)
   }, []);
 
+
+  // APIM 測試
   let config = {
     headers: {
       "Ocp-Apim-Subscription-Key": "66dadb028257452f94ab48e203afe94b",
