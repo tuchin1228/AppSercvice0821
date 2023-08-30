@@ -12,8 +12,8 @@ function App() {
     FetchData();
     
     // Container Env 測試
-    console.log('Hello ' + process.env.keyvaultsecret0829)
-    console.log('Hello ' + process.env.ConnectString)
+    console.log('Hello ' + import.meta.env.keyvaultsecret0829)
+    console.log('Hello ' + import.meta.env.ConnectString)
   }, []);
 
 
